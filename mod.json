@@ -11,6 +11,7 @@
   "version": "v1.0.0",
   "developer": "thebearodactyl",
   "description": "lemon",
+  "tags": ["modtober25", "joke"],
   "resources": {
     "sprites": ["resources/*.png"],
     "files": ["resources/lemon.ogg"]
