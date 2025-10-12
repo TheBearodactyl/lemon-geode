@@ -1,0 +1,19 @@
+{
+  "geode": "4.9.0",
+  "gd": {
+    "win": "2.2074",
+    "android": "2.2074",
+    "mac": "2.2074",
+    "ios": "2.2074"
+  },
+  "id": "thebearodactyl.lemon",
+  "name": "lemon",
+  "early-load": true,
+  "version": "v1.0.0",
+  "developer": "thebearodactyl",
+  "description": "lemon",
+  "resources": {
+    "sprites": ["resources/*.png"],
+    "files": ["resources/lemon.ogg"]
+  }
+}
