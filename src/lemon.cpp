@@ -7,6 +7,8 @@
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/TextArea.hpp>
 
+#include "Geode/cocos/platform/CCFileUtils.h"
+
 using namespace geode::prelude;
 
 struct LemonLayer: Modify<LemonLayer, MenuLayer> {
@@ -263,3 +265,15 @@ struct LemonInfoLayer: Modify<LemonInfoLayer, LevelInfoLayer> {
         m_fields->m_lemonbg->setTextureRect(texRect);
     }
 };
+
+$execute {
+    auto pack_path = Mod::get()->getResourcesDir();
+
+    CCFileUtils::get()->addTexturePack(
+        CCTexturePack {
+            .m_id = Mod::get()->getID(),
+            .m_paths = {pack_path.string()}
+        }
+    );
+    CCFileUtils::get()->updatePaths();
+}

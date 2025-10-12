@@ -8,12 +8,15 @@
   },
   "id": "thebearodactyl.lemon",
   "name": "lemon",
-  "early-load": true,
   "version": "v1.0.0",
   "developer": "thebearodactyl",
   "description": "lemon",
   "resources": {
     "sprites": ["resources/*.png"],
     "files": ["resources/lemon.ogg"]
+  },
+  "links": {
+    "source": "https://github.com/TheBearodactyl/lemon-geode",
+    "homepage": "https://github.com/TheBearodactyl/lemon-geode"
   }
 }
