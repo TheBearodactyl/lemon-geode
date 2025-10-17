@@ -68,8 +68,9 @@ struct LemonSpriteFrameCache: Modify<LemonSpriteFrameCache, CCSpriteFrameCache> 
 			return;
 		}
 
-		CCDictElement* element = nullptr;
+		auto lemon_size = g_lemontex->getContentSize();
 
+		CCDictElement* element = nullptr;
 		CCDICT_FOREACH(frames_dict, element) {
 			const char* frame_name = element->getStrKey();
 			auto frame = this->spriteFrameByName(frame_name);
@@ -79,13 +80,17 @@ struct LemonSpriteFrameCache: Modify<LemonSpriteFrameCache, CCSpriteFrameCache> 
 				auto offset = frame->getOffset();
 				auto orig_size = frame->getOriginalSize();
 
-				auto new_frame = CCSpriteFrame::createWithTexture(
-					g_lemontex,
-					CCRect(0, 0, g_lemontex->getContentSize().width, g_lemontex->getContentSize().height)
-				);
+				float scale_x = rect.size.width / lemon_size.width;
+				float scale_y = rect.size.height / lemon_size.height;
+				float scale = std::min(scale_x, scale_y);
+
+				CCRect lemon_rect(0, 0, lemon_size.width * scale, lemon_size.height * scale);
+
+				auto new_frame = CCSpriteFrame::createWithTexture(g_lemontex, lemon_rect);
 
 				new_frame->setOffset(offset);
 				new_frame->setOriginalSize(orig_size);
+				new_frame->setRect(rect);
 
 				this->removeSpriteFrameByName(frame_name);
 				this->addSpriteFrame(new_frame, frame_name);
@@ -114,6 +119,8 @@ struct LemonSpriteFrameCache: Modify<LemonSpriteFrameCache, CCSpriteFrameCache> 
 			return;
 		}
 
+		auto lemon_size = g_lemontex->getContentSize();
+
 		CCDictElement* element = nullptr;
 		CCDICT_FOREACH(frames_dict, element) {
 			const char* frame_name = element->getStrKey();
@@ -124,13 +131,17 @@ struct LemonSpriteFrameCache: Modify<LemonSpriteFrameCache, CCSpriteFrameCache> 
 				auto offset = frame->getOffset();
 				auto orig_size = frame->getOriginalSize();
 
-				auto new_frame = CCSpriteFrame::createWithTexture(
-					g_lemontex,
-					CCRect(0, 0, g_lemontex->getContentSize().width, g_lemontex->getContentSize().height)
-				);
+				float scale_x = rect.size.width / lemon_size.width;
+				float scale_y = rect.size.height / lemon_size.height;
+				float scale = std::min(scale_x, scale_y);
+
+				CCRect lemon_rect(0, 0, lemon_size.width * scale, lemon_size.height * scale);
+
+				auto new_frame = CCSpriteFrame::createWithTexture(g_lemontex, lemon_rect);
 
 				new_frame->setOffset(offset);
 				new_frame->setOriginalSize(orig_size);
+				new_frame->setRect(rect);
 
 				this->removeSpriteFrameByName(frame_name);
 				this->addSpriteFrame(new_frame, frame_name);
