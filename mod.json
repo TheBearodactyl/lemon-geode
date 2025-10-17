@@ -7,12 +7,18 @@
     "ios": "2.2074"
   },
   "id": "thebearodactyl.lemon",
-  "name": "Lemon",
+  "name": "lemon",
   "version": "v1.1.0",
   "early-load": true,
   "developer": "thebearodactyl",
-  "description": "Lemon",
+  "tags": ["modtober25", "joke"],
+  "description": "lemon",
   "resources": {
-    "sprites": ["resources/lemon.png"]
+    "sprites": ["resources/lemon.png"],
+    "files": ["resources/lemon.ogg"]
+  },
+  "links": {
+    "source": "https://github.com/TheBearodactyl/lemon-geode",
+    "homepage": "https://github.com/TheBearodactyl/lemon-geode"
   }
 }

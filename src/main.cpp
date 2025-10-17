@@ -1,6 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/CCSpriteFrameCache.hpp>
 #include <Geode/modify/CCTextureCache.hpp>
+#include <Geode/modify/MenuLayer.hpp>
 
 using namespace geode::prelude;
 
@@ -19,6 +20,25 @@ struct LemonTextureCache: Modify<LemonTextureCache, CCTextureCache> {
 		}
 
 		return orig_tex;
+	}
+};
+
+struct LemonMenuLayer: Modify<LemonMenuLayer, MenuLayer> {
+	void play_lemon() {
+		auto system = FMODAudioEngine::get();
+		auto audio = Mod::get()->getResourcesDir() / "lemon.ogg";
+
+		system->playMusic(utils::string::pathToString(audio), true, 0.0f, 1);
+	}
+
+	bool init() {
+		if (!MenuLayer::init()) {
+			return false;
+		}
+
+		play_lemon();
+
+		return true;
 	}
 };
 
